@@ -50,7 +50,7 @@ fetchPlugins() {
 		fi
 
 		# shift arguments over for next plug in
-		shift 2
+		shift
 	done
 }
 
