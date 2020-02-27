@@ -85,7 +85,7 @@ main() {
 	fi
 
 	# Place updated .zshrc
-	cp $zshCustomPath/zshrc $homePath/.zshrc
+	cp $zshCustomPath/.zshrc $homePath/.zshrc
 	chmod 644 $homePath/.zshrc
 
 	mkdir -p $zshCustomPath/plugins
