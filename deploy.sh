@@ -44,9 +44,9 @@ fetchPlugins() {
 		# Get plugin from git repo or update if it already exist
 		if [ ! -d $path/$name ]
 		then
-			git clone $url $path/$name
+			git clone $url $path
 		else
-			git --get-dir $path/$name pull --rebase --stat origin master
+			git --get-dir $path/ pull --rebase --stat origin master
 		fi
 
 		# shift arguments over for next plug in
@@ -66,7 +66,7 @@ main() {
 		upgradeOMZ
 	fi
 
-	cd -
+	cd $homePath
 
 	if [ ! -d $zshCustomPath ]; then
 		if git clone https://github.com/jgranzow86/zsh_custom.git $zshCustomPath
