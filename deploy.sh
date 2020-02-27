@@ -57,7 +57,7 @@ fetchPlugins() {
 fetchThemes() {
 }
 
-download() {
+main() {
 	if [ ! -d ~/.oh-my-zsh ]; then
 		installOMZ
 	else
@@ -94,4 +94,4 @@ download() {
 	fetchThemes $themes
 }
 
-deployCustom
+main $@
