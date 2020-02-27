@@ -107,7 +107,7 @@ main() {
 			rm $homePath/.zshrc
 		fi
 		ln -s .zshrc ../.zshrc
-	elif [ -f $homePath/.zshrc ]
+	fi
 		
 	mkdir -p $zshCustomPath/plugins
 	fetchPlugins $pluginGithubURLs
