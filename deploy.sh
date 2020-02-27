@@ -59,10 +59,11 @@ fetchThemes() {
 }
 
 main() {
-	cd $omzPath
+	
 	if [ ! -d $omzPath ]; then
 		installOMZ
 	else
+		cd $omzPath
 		upgradeOMZ
 	fi
 
@@ -71,17 +72,17 @@ main() {
 	if [ ! -d $zshCustomPath ]; then
 		if git clone https://github.com/jgranzow86/zsh_custom.git $zshCustomPath
 		then
-			echo ${colorsGreen}'Install complete!'${colorsReset}
+			echo "${colorsGreen}Install complete!${colorsReset}"
 		else
-			echo ${colorsRed}'Install failed'${colorsReset}
+			echo "${colorsRed}Install failed${colorsReset}"
 			exit
 		fi
 	else
 		if git --get-dir $zshCustomPath pull --rebase --stat origin master
 		then
-			echo ${colorsGreen}'Update complete!'${colorsReset}
+			echo "${colorsGreen}Update complete${colorsReset}"
 		else
-			echo ${colorsRed}'Update failed'${colorsReset}
+			echo "${colorsRed}Update failed${colorsReset}"
 			exit
 		fi
 	fi
