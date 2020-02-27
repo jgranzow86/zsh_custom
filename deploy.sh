@@ -7,8 +7,8 @@ pluginGithubURLs="
 	https://github.com/zsh-users/zsh-autosuggestions.git
 	https://github.com/zsh-users/zsh-syntax-highlighting.git
 	"
-themes="
-
+themesURLs="
+	http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
 "
 
 # Common colors used
@@ -38,7 +38,7 @@ fetchPlugins() {
 	do
 		# Set arguments to varailbe for readability
 		url=$1
-		name=$(echo $url |awk -F / '{ print $5 }' |awk -F. '{ print $1 }')
+		name=$(echo $url |awk -F / '{ print $NF }' |awk -F. '{ print $1 }')
 		path="$zshCustomPath/plugins/$name"
 
 		# Get plugin from git repo or update if it already exist
@@ -55,24 +55,36 @@ fetchPlugins() {
 }
 
 fetchThemes() {
-	echo "PASS"
+	# Loop through arguments and install themes
+	while [ ${#} -gt 0 ]
+	do
+		# Set arguments to varailbe for readability
+		url=$1
+		name=$(echo $url |awk -F / '{ print $NF }')
+		path="$zshCustomPath/themes"
+
+		# Download latest theme version
+		curl -fsSL $url -O $path/$name
+
+		# shift arguments over for next plug in
+		shift
+	done
 }
 
 main() {
-	
 	if [ ! -d $omzPath ]; then
 		installOMZ
 	else
 		cd $omzPath
 		upgradeOMZ
+		cd $homePath
 	fi
 
-	cd $homePath
 
 	if [ ! -d $zshCustomPath ]; then
 		if git clone https://github.com/jgranzow86/zsh_custom.git $zshCustomPath
 		then
-			echo "${colorsGreen}Install complete!${colorsReset}"
+			echo "${colorsGreen}Install complete${colorsReset}"
 		else
 			echo "${colorsRed}Install failed${colorsReset}"
 			exit
@@ -87,15 +99,21 @@ main() {
 		fi
 	fi
 
-	# Place updated .zshrc
-	cp $zshCustomPath/.zshrc $homePath/.zshrc
-	chmod 644 $homePath/.zshrc
-
+	# Link .zshrc
+	if [ ! -h $homePath/.zshrc ]
+	then
+		if [ -f $homePath/.zshrc ]
+		then
+			rm $homePath/.zshrc
+		fi
+		ln -s .zshrc ../.zshrc
+	elif [ -f $homePath/.zshrc ]
+		
 	mkdir -p $zshCustomPath/plugins
 	fetchPlugins $pluginGithubURLs
 
 	mkdir -p $zshCustomPath/themes
-	fetchThemes $themes
+	fetchThemes $themesURLs
 }
 
 main $@
