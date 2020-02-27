@@ -106,7 +106,8 @@ main() {
 		then
 			rm $homePath/.zshrc
 		fi
-		ln -s .zshrc ../.zshrc
+		cd $homePath
+		ln -s .zsh_custom/.zshrc .zshrc
 	fi
 		
 	mkdir -p $zshCustomPath/plugins
