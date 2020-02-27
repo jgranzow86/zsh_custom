@@ -55,6 +55,7 @@ fetchPlugins() {
 }
 
 fetchThemes() {
+	echo "PASS"
 }
 
 main() {
