@@ -64,7 +64,7 @@ fetchThemes() {
 		path="$zshCustomPath/themes"
 
 		# Download latest theme version
-		curl -fsSL $url -O $path/$name
+		curl -fsSL $url -o $path/$name
 
 		# shift arguments over for next plug in
 		shift
