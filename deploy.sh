@@ -65,8 +65,8 @@ main() {
 		upgradeOMZ
 	fi
 
-	if [ ! -d ~/$zshCustomPath ]; then
-		if git clone https://github.com/jgranzow86/zsh_custom.git ~/$zshCustomPath
+	if [ ! -d $zshCustomPath ]; then
+		if git clone https://github.com/jgranzow86/zsh_custom.git $zshCustomPath
 		then
 			echo ${colorsGreen}'Install complete!'${colorsReset}
 		else
@@ -74,8 +74,8 @@ main() {
 			exit
 		fi
 	else
-		cd ~/$zshCustomPath
-		if git pull --rebase --stat origin master
+		cd $zshCustomPath
+		if git -C $zshCustomPath pull --rebase --stat origin master
 		then
 			echo ${colorsGreen}'Update complete!'${colorsReset}
 		else
