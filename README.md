@@ -1,5 +1,10 @@
 # zsh-config
 
+## WARNING Use at your own risk!
+This will erase your current .zshrc config and possibly other settings.
+
+---
+
 Run this to deploy <br />
 `curl -fsSL "https://raw.github.com/jgranzow86/zsh_custom/master/deploy.sh" |sh`
 
