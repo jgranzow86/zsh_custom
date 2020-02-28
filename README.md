@@ -1,7 +1,7 @@
 # zsh-config
 
 ## WARNING Use at your own risk!
-This will erase your current .zshrc config and possibly other settings. Back it up if it's important to you.
+This will erase your current .zshrc config and possibly other ZSH related settings. Back it up if it's important to you.
 
 ---
 
