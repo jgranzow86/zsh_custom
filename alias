@@ -1,0 +1,7 @@
+if [[ $(uname) == "Darwin" ]]
+then
+	alias clear-dns="sudo killall -HUP mDNSResponder"
+	alias clear-hsts="sudo killall nsurlstoraged; rm -rf ~/Library/Cookies/HSTS.plist; launchctl start /System/Library/LaunchAgents/com.apple.nsurlstoraged.plist"
+	alias kill-dock="ps -ef |grep '/System/Library/CoreServices/Dock.app/Contents/MacOS/Dock' |head -1 |awk '{ print $2 }' |xargs kill"
+	alias rocode="cd /Users/jason/Documents/Work/Rustoleum/code/"
+fi

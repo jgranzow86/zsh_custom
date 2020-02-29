@@ -70,7 +70,8 @@ ZSH_CUSTOM=~"/.zsh_custom"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colored-man-pages
+plugins=(ansible
+	colored-man-pages
 	docker
 	docker-compose
 	git
@@ -107,9 +108,13 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Set max history size and max file history size
+export HISTSIZE=10000
+export HISTFILESIZE=10000
+export HISTFILE=.zsh_history
 
-#prompt_context() {
-#  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-#    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-#  fi
-#}
+# Alias file
+source ~/.zsh_custom/alias
+
+# Add path for brew
+export PATH="/usr/local/sbin:$PATH"
