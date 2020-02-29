@@ -29,6 +29,7 @@ uninstallOMZ() {
 }
 
 upgradeOMZ() {
+	cd $omzPath
 	sh $omzPath/tools/upgrade.sh
 }
 
