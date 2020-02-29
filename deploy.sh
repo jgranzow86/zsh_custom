@@ -30,7 +30,7 @@ uninstallOMZ() {
 
 upgradeOMZ() {
 	cd $omzPath
-	sh $omzPath/tools/upgrade.sh
+	sh tools/upgrade.sh
 }
 
 fetchPlugins() {
