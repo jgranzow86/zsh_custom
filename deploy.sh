@@ -43,7 +43,7 @@ fetchPlugins() {
 		path="$zshCustomPath/plugins/$name"
 
 		# Get plugin from git repo or update if it already exist
-		if [ ! -d $path/$name ]
+		if [ ! -d $path ]
 		then
 			git clone $url $path
 		else
