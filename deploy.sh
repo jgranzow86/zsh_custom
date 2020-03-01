@@ -47,7 +47,8 @@ fetchPlugins() {
 		then
 			git clone $url $path
 		else
-			git --git-dir $path/.git pull --rebase --stat origin master
+			cd $path
+			git pull --rebase --stat origin master
 		fi
 
 		# shift arguments over for next plug in
@@ -88,15 +89,16 @@ main() {
 			echo "${colorsGreen}Install complete${colorsReset}"
 		else
 			echo "${colorsRed}Install failed${colorsReset}"
-			exit
+			exit 10
 		fi
 	else
-		if git --git-dir $zshCustomPath/.git pull --rebase --stat origin master
+		cd $zshCustomPath
+		if git pull --rebase --stat origin master
 		then
 			echo "${colorsGreen}Update complete${colorsReset}"
 		else
 			echo "${colorsRed}Update failed${colorsReset}"
-			exit
+			exit 20
 		fi
 	fi
 
